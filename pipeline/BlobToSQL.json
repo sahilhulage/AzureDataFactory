@@ -1,0 +1,273 @@
+{
+	"name": "BlobToSQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_fio",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "//"
+					},
+					{
+						"name": "Destination",
+						"value": "testtable.Azure Data Lake Storage Gen2 file"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "policyID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "policyID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "statecode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "statecode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "county",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "county",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "eq_site_limit",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "eq_site_limit",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "hu_site_limit",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "hu_site_limit",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fl_site_limit",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "fl_site_limit",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fr_site_limit",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "fr_site_limit",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "tiv_2011",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "tiv_2011",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "tiv_2012",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "tiv_2012",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "eq_site_deductible",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "eq_site_deductible",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "hu_site_deductible",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "hu_site_deductible",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fl_site_deductible",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "fl_site_deductible",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "fr_site_deductible",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "fr_site_deductible",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "point_latitude",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "point_latitude",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "point_longitude",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "point_longitude",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "line",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "line",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "construction",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "construction",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "point_granularity",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "point_granularity",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_fio",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_fio",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-04-16T11:40:01Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

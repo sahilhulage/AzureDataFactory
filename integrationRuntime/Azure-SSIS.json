@@ -1,0 +1,36 @@
+{
+	"name": "Azure-SSIS",
+	"properties": {
+		"type": "Managed",
+		"typeProperties": {
+			"computeProperties": {
+				"location": "East US 2",
+				"nodeSize": "Standard_D1_v2",
+				"numberOfNodes": 1,
+				"maxParallelExecutionsPerNode": 1
+			},
+			"ssisProperties": {
+				"catalogInfo": {
+					"catalogServerEndpoint": "adfdbserver95.database.windows.net",
+					"catalogAdminUserName": "sahil",
+					"catalogAdminPassword": {
+						"type": "SecureString",
+						"value": "**********"
+					},
+					"catalogPricingTier": "Basic"
+				},
+				"edition": "Standard",
+				"licenseType": "LicenseIncluded",
+				"packageStores": [
+					{
+						"name": "Blob Storage",
+						"packageStoreLinkedService": {
+							"referenceName": "Blob Share",
+							"type": "LinkedServiceReference"
+						}
+					}
+				]
+			}
+		}
+	}
+}

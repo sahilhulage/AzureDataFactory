@@ -1,0 +1,17 @@
+{
+	"name": "DestinationDataset_fio",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "testtable",
+			"table": "Azure Data Lake Storage Gen2 file"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
